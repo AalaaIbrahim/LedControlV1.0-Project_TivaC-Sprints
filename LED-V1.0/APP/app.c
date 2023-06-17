@@ -11,6 +11,7 @@
 /*
  * Includes */
 #include "app.h"
+#include "led_interface.h"
 
 /*
  * Private Typedefs */
@@ -25,14 +26,14 @@ typedef enum{
 
 /*
  * Private MACROS/Defines */
-#define RED_LED_PORT 		5 // Port F
-#define RED_LED_PIN			1
+#define RED_LED_PORT 		LED_PORT_F // Port F
+#define RED_LED_PIN			LED_PIN_1
 
-#define GREEN_LED_PORT 	5 // Port F
-#define GREEN_LED_PIN		3
+#define GREEN_LED_PORT 	LED_PORT_F // Port F
+#define GREEN_LED_PIN		LED_PIN_3
 
-#define BLUE_LED_PORT 	5 // Port F
-#define BLUE_LED_PIN		2
+#define BLUE_LED_PORT 	LED_PORT_F // Port F
+#define BLUE_LED_PIN		LED_PIN_2
 
 #define BTN_PORT 				5 // Port F
 #define BTN_PIN 				4
@@ -40,7 +41,7 @@ typedef enum{
 
 /*
  * Private Variables */
-static app_state_t gl_u8_app_state = ALL_OFF;
+static app_state_t gl_u8_app_state = RED_ON;
 
 
 void app_init(void)
@@ -62,27 +63,33 @@ void app_start(void)
 
             case ALL_OFF:
             {
-                // todo turn off all leds
+                led_off(RED_LED_PORT, RED_LED_PIN);
+                led_off(GREEN_LED_PORT, GREEN_LED_PIN);
+                led_off(BLUE_LED_PORT, BLUE_LED_PIN);
                 break;
             }
             case RED_ON:
             {
-                // todo turn on red led only
+                led_on(RED_LED_PORT, RED_LED_PIN);
                 break;
             }
             case GREEN_ON:
             {
-                // todo turn on green led only
+                led_off(RED_LED_PORT, RED_LED_PIN);
+                led_on(GREEN_LED_PORT, GREEN_LED_PIN);
                 break;
             }
             case BLUE_ON:
             {
-                // todo turn on blue led only
+                led_off(GREEN_LED_PORT, GREEN_LED_PIN);
+                led_on(BLUE_LED_PORT, BLUE_LED_PIN);
                 break;
             }
             case ALL_ON:
             {
-                // todo turn on all RGB
+                led_on(RED_LED_PORT, RED_LED_PIN);
+                led_on(GREEN_LED_PORT, GREEN_LED_PIN);
+                led_on(BLUE_LED_PORT, BLUE_LED_PIN);
                 break;
             }
             case STATES_TOTAL:
