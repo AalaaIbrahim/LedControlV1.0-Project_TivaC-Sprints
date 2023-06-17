@@ -25,16 +25,16 @@ typedef enum{
 
 /*
  * Private MACROS/Defines */
-#define RED_LED_PORT 		4 // Port F
+#define RED_LED_PORT 		5 // Port F
 #define RED_LED_PIN			1
 
-#define GREEN_LED_PORT 	4 // Port F
+#define GREEN_LED_PORT 	5 // Port F
 #define GREEN_LED_PIN		3
 
-#define BLUE_LED_PORT 	4 // Port F
+#define BLUE_LED_PORT 	5 // Port F
 #define BLUE_LED_PIN		2
 
-#define BTN_PORT 				4 // Port F
+#define BTN_PORT 				5 // Port F
 #define BTN_PIN 				4
 
 
