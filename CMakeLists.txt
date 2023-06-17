@@ -10,9 +10,11 @@ include_directories(LED-V1.0/HAL/led)
 include_directories(LED-V1.0/LIB)
 include_directories(LED-V1.0/MCAL)
 include_directories(LED-V1.0/MCAL/gpio)
+include_directories(LED-V1.0/MCAL/systick)
 include_directories(LED-V1.0/RTE/_Target_1)
 
 add_executable(shared
+
         LED-V1.0/APP/app.c
         LED-V1.0/APP/app.h
         LED-V1.0/HAL/led/led_interface.h
@@ -25,4 +27,5 @@ add_executable(shared
         LED-V1.0/RTE/_Target_1/RTE_Components.h
         LED-V1.0/RTE/Device/TM4C123GH6PM/system_TM4C123.c
         LED-V1.0/led_interface.h
-        LED-V1.0/main.c)
+        LED-V1.0/main.c
+        LED-V1.0/MCAL/systick/systick_program.c)

@@ -18,11 +18,13 @@ typedef                     double      f64_t_;         /* 8 bytes, 1.7e-308 -> 
 
 typedef                     void        vd_t_;
 
+typedef unsigned 		char								boolean;
 
 #define TRUE        1
 #define FALSE       0
 
 #define NULL        (0)
+#define ZERO        (0)
 #define NULL_PTR    ((void *) 0)
 
 #endif /* STD_H_ */
