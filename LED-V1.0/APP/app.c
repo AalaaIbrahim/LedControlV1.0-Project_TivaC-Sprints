@@ -8,7 +8,12 @@
  * @copyright Copyright (c) 2023
  */
 
+/*
+ * Includes */
 #include "app.h"
+
+/*
+ * Private Typedefs */
 typedef enum{
     ALL_OFF = 0 ,
     RED_ON      ,
@@ -18,7 +23,25 @@ typedef enum{
     STATES_TOTAL
 }app_state_t;
 
+/*
+ * Private MACROS/Defines */
+#define RED_LED_PORT 		4 // Port F
+#define RED_LED_PIN			1
+
+#define GREEN_LED_PORT 	4 // Port F
+#define GREEN_LED_PIN		3
+
+#define BLUE_LED_PORT 	4 // Port F
+#define BLUE_LED_PIN		2
+
+#define BTN_PORT 				4 // Port F
+#define BTN_PIN 				4
+
+
+/*
+ * Private Variables */
 static app_state_t gl_u8_app_state = ALL_OFF;
+
 
 void app_init(void)
 {
