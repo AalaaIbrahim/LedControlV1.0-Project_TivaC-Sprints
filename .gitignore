@@ -447,3 +447,5 @@ cmake-build-debug/
 *.dtmp
 
 *.workspace
+
+/LED-V1.0/Objects/
