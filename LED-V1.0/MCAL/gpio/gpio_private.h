@@ -13,7 +13,7 @@
 
 #define RCGCGPIO					*((volatile uint32_t_*) 0x400FE608) /* GPIO Run Mode Clock Gating Control */
 
-#define GPIODATA(X)				*((volatile uint32_t_*)(GPIO_OFFSET(X)+0x000))		/* GPIO Data */
+#define GPIODATA(X)				*((volatile uint32_t_*)(GPIO_OFFSET(X)+0x3FC))		/* GPIO Data */
 #define GPIODIR(X)				*((volatile uint32_t_*)(GPIO_OFFSET(X)+0x400))		/* GPIO Direction */
 #define GPIOIS(X)					*((volatile uint32_t_*)(GPIO_OFFSET(X)+0x404))		/* GPIO Interrupt Sense */
 #define GPIOIBE(X)				*((volatile uint32_t_*)(GPIO_OFFSET(X)+0x408))		/* GPIO Interrupt Both Edges */

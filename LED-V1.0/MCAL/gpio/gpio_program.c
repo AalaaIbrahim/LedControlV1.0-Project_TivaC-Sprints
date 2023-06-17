@@ -224,7 +224,7 @@ en_gpio_error_t gpio_setPinVal (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_pin
 			switch(en_a_pinVal)
 			{
 				case LOW : CLR_BIT(GPIODATA(en_a_port), en_a_pin); break;
-				case HIGH: SET_BIT(GPIODATA(en_a_port), en_a_pin+2); break;
+				case HIGH: SET_BIT(GPIODATA(en_a_port), en_a_pin); break;
 				default	 : gpio_error_state = GPIO_ERROR;
 			}
 		}
