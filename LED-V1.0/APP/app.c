@@ -11,6 +11,7 @@
 /*
  * Includes */
 #include "app.h"
+#include "led_interface.h"
 
 /*
  * Private Typedefs */
@@ -40,7 +41,7 @@ typedef enum{
 
 /*
  * Private Variables */
-static app_state_t gl_u8_app_state = ALL_OFF;
+static app_state_t gl_u8_app_state = RED_ON;
 
 
 void app_init(void)
@@ -62,27 +63,33 @@ void app_start(void)
 
             case ALL_OFF:
             {
-                // todo turn off all leds
+                led_off(RED_LED_PORT, RED_LED_PIN);
+                led_off(GREEN_LED_PORT, GREEN_LED_PIN);
+                led_off(BLUE_LED_PORT, BLUE_LED_PIN);
                 break;
             }
             case RED_ON:
             {
-                // todo turn on red led only
+                led_on(RED_LED_PORT, RED_LED_PIN);
                 break;
             }
             case GREEN_ON:
             {
-                // todo turn on green led only
+                led_off(RED_LED_PORT, RED_LED_PIN);
+                led_on(GREEN_LED_PORT, GREEN_LED_PIN);
                 break;
             }
             case BLUE_ON:
             {
-                // todo turn on blue led only
+                led_off(GREEN_LED_PORT, GREEN_LED_PIN);
+                led_on(BLUE_LED_PORT, BLUE_LED_PIN);
                 break;
             }
             case ALL_ON:
             {
-                // todo turn on all RGB
+                led_on(RED_LED_PORT, RED_LED_PIN);
+                led_on(GREEN_LED_PORT, GREEN_LED_PIN);
+                led_on(BLUE_LED_PORT, BLUE_LED_PIN);
                 break;
             }
             case STATES_TOTAL:
