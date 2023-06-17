@@ -11,8 +11,6 @@
 #ifndef APP_H_
 #define APP_H_
 
-#include <TM4C123.h>
-
 void app_init(void);
 
 void app_start(void);
