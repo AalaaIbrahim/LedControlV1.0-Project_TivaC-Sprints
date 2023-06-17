@@ -5,16 +5,24 @@ set(CMAKE_C_STANDARD 11)
 
 include_directories(LED-V1.0)
 include_directories(LED-V1.0/APP)
+include_directories(LED-V1.0/HAL)
+include_directories(LED-V1.0/HAL/led)
 include_directories(LED-V1.0/LIB)
+include_directories(LED-V1.0/MCAL)
+include_directories(LED-V1.0/MCAL/gpio)
 include_directories(LED-V1.0/RTE/_Target_1)
-include_directories(LED-V1.0/RTE/Device)
-include_directories(LED-V1.0/RTE/Device/TM4C123GH6PM)
 
 add_executable(shared
         LED-V1.0/APP/app.c
         LED-V1.0/APP/app.h
+        LED-V1.0/HAL/led/led_interface.h
+        LED-V1.0/HAL/led/led_program.c
         LED-V1.0/LIB/bit_math.h
         LED-V1.0/LIB/std.h
+        LED-V1.0/MCAL/gpio/gpio_interface.h
+        LED-V1.0/MCAL/gpio/gpio_private.h
+        LED-V1.0/MCAL/gpio/gpio_program.c
         LED-V1.0/RTE/_Target_1/RTE_Components.h
         LED-V1.0/RTE/Device/TM4C123GH6PM/system_TM4C123.c
+        LED-V1.0/led_interface.h
         LED-V1.0/main.c)
