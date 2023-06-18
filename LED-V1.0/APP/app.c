@@ -36,8 +36,8 @@ typedef enum{
 #define BLUE_LED_PORT 	LED_PORT_F // Port F
 #define BLUE_LED_PIN		LED_PIN_2
 
-#define USER_BTN_PORT 				BTN_PORT_F // Port F
-#define USER_BTN_PIN 				BTN_PIN_4
+#define USER_BTN_PORT		BTN_PORT_F // Port F
+#define USER_BTN_PIN		BTN_PIN_4
 
 
 /*
