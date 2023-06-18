@@ -23,7 +23,7 @@ typedef enum{
     BLUE_ON     ,
     ALL_ON      ,
     STATES_TOTAL
-}app_state_t;
+}en_app_state_t;
 
 /*
  * Private MACROS/Defines */
@@ -42,7 +42,7 @@ typedef enum{
 
 /*
  * Private Variables */
-static app_state_t gl_u8_app_state = ALL_OFF;
+static en_app_state_t gl_u8_app_state = ALL_OFF;
 
 static st_btn_config_t_ gl_st_user_btn_cfg = {
         .en_btn_port = USER_BTN_PORT,
