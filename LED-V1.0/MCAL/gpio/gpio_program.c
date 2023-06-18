@@ -310,7 +310,7 @@ en_gpio_error_t gpio_getPinVal (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_pin
 		
 		if(GPIO_OK == gpio_error_state)
 		{
-			*pu8_a_val = GET_BIT(GPIODATA(en_a_port), en_a_pin);
+			*pu8_a_val = (en_gpio_pin_level_t) GET_BIT(GPIODATA(en_a_port), en_a_pin);
 		}
 		else
 		{
@@ -352,7 +352,7 @@ en_gpio_error_t gpio_enableInt (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_pin
 		}
 		else
 		{
-			NVIC_EnableIRQ(en_a_port);
+			NVIC_EnableIRQ((IRQn_Type) en_a_port);
 			__enable_irq();
 		}
 	}

@@ -8,7 +8,7 @@
 /*----------------------------------------------------------/
 /- INCLUDES 
 /----------------------------------------------------------*/
-//#include "systick_interface.h"
+#include "systick_interface.h"
 #include "gpio_interface.h"
 
 #include "btn_interface.h"
@@ -43,9 +43,9 @@ enu_btn_status_code_t_ btn_init(str_btn_config_t_* ptr_str_btn_config)
 			switch (ptr_str_btn_config->enu_btn_pull_type)
 			{
 				case BTN_INTERNAL_PULL_UP	 :
-				case BTN_INTERNAL_PULL_DOWN: btn_pin_cfg.pin_cfg = 
-																			INPUT_PULL_UP 
-																		+ ptr_str_btn_config->enu_btn_pull_type; 
+				case BTN_INTERNAL_PULL_DOWN: btn_pin_cfg.pin_cfg = (en_gpio_pin_cfg_t)
+																		(INPUT_PULL_UP 
+																		+ ptr_str_btn_config->enu_btn_pull_type); 
 																		break;
 				case BTN_EXTERNAL_PULL_UP  : 
 				case BTN_EXTERNAL_PULL_DOWN: btn_pin_cfg.pin_cfg = INPUT; break;
@@ -114,14 +114,14 @@ enu_btn_status_code_t_ btn_read(str_btn_config_t_* ptr_str_btn_config, enu_btn_s
 				case BTN_INTERNAL_PULL_UP:
 				case BTN_EXTERNAL_PULL_UP:
 				{
-					*ptr_enu_btn_state = !lo_enu_btn_val;
+					*ptr_enu_btn_state = (enu_btn_state_t_)(!lo_enu_btn_val);
 					systick_ms_delay(BTN_DEBOUNCE_DELAY);
 					break;
 				}
 				case BTN_INTERNAL_PULL_DOWN:
 				case BTN_EXTERNAL_PULL_DOWN:
 				{
-					*ptr_enu_btn_state = lo_enu_btn_val;
+					*ptr_enu_btn_state = (enu_btn_state_t_)lo_enu_btn_val;
 					systick_ms_delay(BTN_DEBOUNCE_DELAY);
 					break;
 				}				
