@@ -98,7 +98,7 @@ en_systick_error_t systick_ms_delay(uint32_t_ uint32_ms_delay)
 
             // 3. Configure the STCTRL register for the required operation
             SET_BIT(STCTRL, STCTRL_ENABLE); // start timer
-            while (GET_BIT(STCTRL, STCTRL_COUNT) != 0);
+            while (GET_BIT(STCTRL, STCTRL_COUNT) == 0);
             CLR_BIT(STCTRL, STCTRL_ENABLE); // stop timer
         }
 
