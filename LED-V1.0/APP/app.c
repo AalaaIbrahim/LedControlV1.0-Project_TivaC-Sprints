@@ -42,7 +42,7 @@ typedef enum{
 
 /*
  * Private Variables */
-static app_state_t gl_u8_app_state = RED_ON;
+static app_state_t gl_u8_app_state = ALL_OFF;
 
 static str_btn_config_t_ gl_str_user_btn_cfg = {
         .enu_btn_port = USER_BTN_PORT,
