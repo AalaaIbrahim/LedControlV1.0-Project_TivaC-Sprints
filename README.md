@@ -10,7 +10,7 @@
 
 
 ## Quick Links
-- `Video` 👉 Youtube - uploading
+- `Video` 👉 [Youtube](https://youtu.be/5NrU2kTSSLw)
 - `Project Hex` 👉 [Build/LED_Control.hex](Build/LED_Control.hex)
 - `Documentation` 👉 [Google Docs](https://docs.google.com/document/d/15XCq7KhCA17o89rHl8B3dAgSLqRwxgf1_SmRaluHrGM/edit?usp=sharing) 👉 PDF - uploading
 - `Team Backlog / Test Protocol` 👉 [Google Sheets](https://docs.google.com/spreadsheets/d/1hLTnshn1FoeaB7fPf3SfYW_tURnP0ARYbz8il4nLKLA/edit#gid=0) 👉 Excel File - uploading 
