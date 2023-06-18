@@ -50,8 +50,27 @@ typedef struct{
 
 }st_systick_cfg_t;
 
-en_systick_error_t systick_init(st_systick_cfg_t * st_systick_cfg);
+/**
+ * @brief                       : Initializes SYSTICK driver
+ *
+ * @param ptr_st_systick_cfg        : Pointer to Systick Configuration
+ *
+ * @return  ST_OK              :   In case of Successful Operation
+ *          ST_INVALID_ARGS    :   In case of Failed Operation (Invalid Arguments Given)
+ *          ST_INVALID_CONFIG  :   In case of Failed Operation (Invalid Systick Config Given)
+ */
+en_systick_error_t systick_init(st_systick_cfg_t * ptr_st_systick_cfg);
 
+
+/**
+ * @brief                      : Initiates a sync blocking delay
+ *
+ * @param uint32_ms_delay      : Desired delay in ms
+ *
+ * @return  ST_OK              :   In case of Successful Operation
+ *          ST_INVALID_ARGS    :   In case of Failed Operation (Invalid Arguments Given)
+ *          ST_INVALID_CONFIG  :   In case of Failed Operation (Invalid Systick Config Given)
+ */
 en_systick_error_t systick_ms_delay(uint32_t_ uint32_ms_delay);
 
 #endif //SYSTICK_INTERFACE_H
