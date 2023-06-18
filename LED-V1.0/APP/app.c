@@ -88,7 +88,7 @@ void app_start(void)
 {
     while(1)
     {
-        // todo check button is pressed? go to next state
+
         en_btn_state_t_ en_btn_state = BTN_STATE_NOT_PRESSED;
         btn_read(&gl_st_user_btn_cfg, &en_btn_state);
 
