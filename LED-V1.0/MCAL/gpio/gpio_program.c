@@ -36,7 +36,9 @@ gpio_cb arr_gpio_cbf[GPIO_PORT_TOTAL][GPIO_PIN_TOTAL] = {{NULL}};
 static en_gpio_error_t port_pin_check(en_gpio_port_t port, en_gpio_pin_t pin)
 {
 	if		 (port >= GPIO_PORT_TOTAL) return GPIO_INVALID_PORT;
-	else if(pin  >= GPIO_PIN_TOTAL)  return GPIO_INVALID_PIN;
+	else if((pin  >= GPIO_PIN_TOTAL) 
+			|| (port == GPIO_PORT_F && pin > GPIO_PIN_4))
+					return GPIO_INVALID_PIN;
 	else return GPIO_OK;
 }
 
@@ -298,7 +300,7 @@ en_gpio_error_t gpio_togPinVal 		 (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_
  *					GPIO_ERROR	     : If the passed pointer is a null pointer
  *
  */
-en_gpio_error_t gpio_getPinVal (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_pin, uint8_t_* pu8_a_val)
+en_gpio_error_t gpio_getPinVal (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_pin, en_gpio_pin_level_t* pu8_a_val)
 {
 	en_gpio_error_t gpio_error_state = GPIO_OK;
 	
@@ -334,7 +336,7 @@ en_gpio_error_t gpio_getPinVal (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_pin
  *					GPIO_INVALID_PORT: If the passed port is not a valid port
  *					GPIO_INVALID_PIN : If the passed pin is not a valid pin
  */
-en_gpio_error_t gpio_enableInt 		 (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_pin)
+en_gpio_error_t gpio_enableInt (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_pin)
 {
 	en_gpio_error_t gpio_error_state = port_pin_check(en_a_port, en_a_pin);
 	
@@ -670,6 +672,7 @@ void GPIOF_Handler(void)
 	else if(GET_BIT(GPIOMIS(GPIO_PORT_F), GPIO_PIN_1)) pin = GPIO_PIN_1;
 	else if(GET_BIT(GPIOMIS(GPIO_PORT_F), GPIO_PIN_2)) pin = GPIO_PIN_2;
 	else if(GET_BIT(GPIOMIS(GPIO_PORT_F), GPIO_PIN_3)) pin = GPIO_PIN_3;
+	else if(GET_BIT(GPIOMIS(GPIO_PORT_F), GPIO_PIN_4)) pin = GPIO_PIN_4;
 	else{/* Do Nothing */}
 
 	/* Clear the interrupt flag */

@@ -195,7 +195,7 @@ en_gpio_error_t gpio_togPinVal 		 (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_
  *					GPIO_INVALID_PIN : If the passed pin is not a valid pin
  *					GPIO_ERROR	     : If the passed pointer is a null pointer
  */
-en_gpio_error_t gpio_getPinVal 		 (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_pin, uint8_t_* pu8_a_Val);
+en_gpio_error_t gpio_getPinVal 		 (en_gpio_port_t en_a_port, en_gpio_pin_t en_a_pin, en_gpio_pin_level_t* pu8_a_Val);
 
 /** 
  ** @breif Function enable the GPIO interrupt for a given pin 
