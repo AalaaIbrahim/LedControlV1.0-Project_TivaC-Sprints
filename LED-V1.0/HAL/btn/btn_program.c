@@ -34,29 +34,35 @@ enu_btn_status_code_t_ btn_init(str_btn_config_t_* ptr_str_btn_config)
 {
 	enu_btn_status_code_t_ lo_enu_btn_status = BTN_STATUS_OK;
 	st_gpio_cfg_t btn_pin_cfg;
+	st_systick_cfg_t lo_stk_cfg;
 	
 	if (NULL_PTR != ptr_str_btn_config)
 	{
 		btn_pin_cfg.port = (en_gpio_port_t) ptr_str_btn_config->enu_btn_port;
 		btn_pin_cfg.pin  = (en_gpio_pin_t)  ptr_str_btn_config->enu_btn_pin;
+		
+		lo_stk_cfg.bool_systick_int_enabled = FALSE;
+		lo_stk_cfg.en_systick_clk_src = CLK_SRC_PIOSC;
 
-			switch (ptr_str_btn_config->enu_btn_pull_type)
-			{
-				case BTN_INTERNAL_PULL_UP	 :
-				case BTN_INTERNAL_PULL_DOWN: btn_pin_cfg.pin_cfg = (en_gpio_pin_cfg_t)
-																		(INPUT_PULL_UP 
-																		+ ptr_str_btn_config->enu_btn_pull_type); 
-																		break;
-				case BTN_EXTERNAL_PULL_UP  : 
-				case BTN_EXTERNAL_PULL_DOWN: btn_pin_cfg.pin_cfg = INPUT; break;
-				default : lo_enu_btn_status = BTN_STATUS_INVALID_PULL_TYPE;
-			}
-			
-			/* Initialize the button pin */
-			gpio_pin_init(&btn_pin_cfg);
-			
-			/* Set the button state */
-			ptr_str_btn_config->enu_btn_activation = BTN_ACTIVATED;
+		switch (ptr_str_btn_config->enu_btn_pull_type)
+		{
+			case BTN_INTERNAL_PULL_UP	 :
+			case BTN_INTERNAL_PULL_DOWN: btn_pin_cfg.pin_cfg = (en_gpio_pin_cfg_t)
+																	(INPUT_PULL_UP 
+																	+ ptr_str_btn_config->enu_btn_pull_type); 
+																	break;
+			case BTN_EXTERNAL_PULL_UP  : 
+			case BTN_EXTERNAL_PULL_DOWN: btn_pin_cfg.pin_cfg = INPUT; break;
+			default : lo_enu_btn_status = BTN_STATUS_INVALID_PULL_TYPE;
+		}
+		
+		/* Initialize the button pin */
+		gpio_pin_init(&btn_pin_cfg);
+		
+		systick_init(&lo_stk_cfg);
+		
+		/* Set the button state */
+		ptr_str_btn_config->enu_btn_activation = BTN_ACTIVATED;
 	}
 	else
 	{
