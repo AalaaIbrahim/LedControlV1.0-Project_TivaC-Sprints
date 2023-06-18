@@ -429,6 +429,16 @@
               <FileType>1</FileType>
               <FilePath>.\HAL\led\led_program.c</FilePath>
             </File>
+            <File>
+              <FileName>btn_interface.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HAL\btn\btn_interface.h</FilePath>
+            </File>
+            <File>
+              <FileName>btn_program.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HAL\btn\btn_program.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
