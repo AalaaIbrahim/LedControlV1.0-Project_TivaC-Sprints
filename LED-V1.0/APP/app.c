@@ -44,11 +44,11 @@ typedef enum{
  * Private Variables */
 static app_state_t gl_u8_app_state = ALL_OFF;
 
-static str_btn_config_t_ gl_str_user_btn_cfg = {
-        .enu_btn_port = USER_BTN_PORT,
-        .enu_btn_pin  = USER_BTN_PIN,
-        .enu_btn_activation = BTN_ACTIVATED,
-        .enu_btn_pull_type = BTN_INTERNAL_PULL_UP
+static st_btn_config_t_ gl_st_user_btn_cfg = {
+        .en_btn_port = USER_BTN_PORT,
+        .en_btn_pin  = USER_BTN_PIN,
+        .en_btn_activation = BTN_ACTIVATED,
+        .en_btn_pull_type = BTN_INTERNAL_PULL_UP
 };
 
 void app_init(void)
@@ -59,7 +59,7 @@ void app_init(void)
     led_init(BLUE_LED_PORT, BLUE_LED_PIN);
 
     // init BTN
-    btn_init(&gl_str_user_btn_cfg);
+    btn_init(&gl_st_user_btn_cfg);
 }
 
 void app_start(void)
@@ -67,10 +67,10 @@ void app_start(void)
     while(1)
     {
         // todo check button is pressed? go to next state
-        enu_btn_state_t_ enu_btn_state = BTN_STATE_NOT_PRESSED;
-        btn_read(&gl_str_user_btn_cfg, &enu_btn_state);
+        en_btn_state_t_ en_btn_state = BTN_STATE_NOT_PRESSED;
+        btn_read(&gl_st_user_btn_cfg, &en_btn_state);
 
-        if(BTN_STATE_PRESSED == enu_btn_state)
+        if(BTN_STATE_PRESSED == en_btn_state)
         {
             if(ALL_ON == gl_u8_app_state)
             {

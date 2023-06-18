@@ -123,7 +123,7 @@ en_gpio_error_t gpio_port_init 		 (st_gpio_cfg_t* port_cfg);
  * configurations set in the referenced structure
  *
  ** @Parameters
-*				[in] ptr_str_pin_cfg : pointer to the pin configuration structure
+*				[in] ptr_st_pin_cfg : pointer to the pin configuration structure
  *
  ** @return	GPIO_OK          : If the operation is done successfully
  *					GPIO_INALID_PORT : If the passed port is not a valid port

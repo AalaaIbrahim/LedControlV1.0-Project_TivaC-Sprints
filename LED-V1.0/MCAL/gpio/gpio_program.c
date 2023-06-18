@@ -49,32 +49,32 @@ static en_gpio_error_t port_pin_check(en_gpio_port_t port, en_gpio_pin_t pin)
  * configurations set in the referenced structure
  *
  ** @Parameters
-*				[in] ptr_str_pin_cfg : pointer to the pin configuration structure
+*				[in] ptr_st_pin_cfg : pointer to the pin configuration structure
  *
  ** @return	GPIO_OK          : If the operation is done successfully
  *					GPIO_INALID_PORT : If the passed port is not a valid port
  *					GPIO_INALID_PIN  : If the passed pin is not a valid pin
  *					GPIO_ERROR	     : If the passed pointer is a null pointer
  */
-en_gpio_error_t gpio_pin_init  (st_gpio_cfg_t* ptr_str_pin_cfg)
+en_gpio_error_t gpio_pin_init  (st_gpio_cfg_t* ptr_st_pin_cfg)
 {
 	en_gpio_error_t gpio_error_state = GPIO_OK;
 	
-	if(NULL_PTR != ptr_str_pin_cfg)
+	if(NULL_PTR != ptr_st_pin_cfg)
 	{
 		/* Validate the port and pin values */
-		gpio_error_state = port_pin_check(ptr_str_pin_cfg->port, ptr_str_pin_cfg->pin);
+		gpio_error_state = port_pin_check(ptr_st_pin_cfg->port, ptr_st_pin_cfg->pin);
 		
 		if(GPIO_OK == gpio_error_state)
 		{
-			en_gpio_port_t port = ptr_str_pin_cfg->port;
-			en_gpio_pin_t  pin  = ptr_str_pin_cfg->pin;
+			en_gpio_port_t port = ptr_st_pin_cfg->port;
+			en_gpio_pin_t  pin  = ptr_st_pin_cfg->pin;
 			
 			/* Enable the port clock */
 			SET_BIT(RCGCGPIO, port);
 						
 			/* Set the pin direction */
-			switch(ptr_str_pin_cfg->pin_cfg)
+			switch(ptr_st_pin_cfg->pin_cfg)
 			{
 				case INPUT: //floating
 				{
@@ -136,7 +136,7 @@ en_gpio_error_t gpio_pin_init  (st_gpio_cfg_t* ptr_str_pin_cfg)
 			if	((GPIO_OK == gpio_error_state) 
 				&& (GET_BIT(GPIODIR(port), pin)))
 			{
-				switch(ptr_str_pin_cfg->current)
+				switch(ptr_st_pin_cfg->current)
 				{
 					case PIN_CURRENT_2MA: SET_BIT(GPIODR2R(port), pin); break;
 					case PIN_CURRENT_4MA: SET_BIT(GPIODR4R(port), pin); break;

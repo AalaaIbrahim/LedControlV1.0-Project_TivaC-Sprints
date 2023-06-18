@@ -16,115 +16,115 @@
 /**
  * @brief                       :   Initializes LED on given port & pin
  *
- * @param[in]   enu_led_port    :   LED Port
- * @param[in]   enu_led_pin     :   LED Pin number in enu_led_port
+ * @param[in]   en_led_port    :   LED Port
+ * @param[in]   en_led_pin     :   LED Pin number in en_led_port
  *
  * @return  LED_OK              :   In case of Successful Operation
  *          LED_ERROR           :   In case of Failed Operation
  */
-enu_led_error_t_ led_init(enu_led_port_t_ enu_led_port, enu_led_pin_t_ enu_led_pin)
+en_led_error_t_ led_init(en_led_port_t_ en_led_port, en_led_pin_t_ en_led_pin)
 {
-    enu_led_error_t_ enu_led_error_retval = LED_OK;
-    if((LED_PORT_TOTAL <= enu_led_port) || (LED_PIN_TOTAL <= enu_led_pin))
+    en_led_error_t_ en_led_error_retval = LED_OK;
+    if((LED_PORT_TOTAL <= en_led_port) || (LED_PIN_TOTAL <= en_led_pin))
     {
-        enu_led_error_retval = LED_ERROR;
+        en_led_error_retval = LED_ERROR;
     }
     else
     {
         // prepare pin cfg
         st_gpio_cfg_t st_gpio_cfg_led = {
-            .port = (en_gpio_port_t) enu_led_port,
-            .pin = (en_gpio_pin_t) enu_led_pin,
+            .port = (en_gpio_port_t) en_led_port,
+            .pin = (en_gpio_pin_t) en_led_pin,
             .current = PIN_CURRENT_2MA,
             .pin_cfg = OUTPUT
         };
-        en_gpio_error_t enu_dio_error = gpio_pin_init(&st_gpio_cfg_led);
+        en_gpio_error_t en_dio_error = gpio_pin_init(&st_gpio_cfg_led);
 
-        enu_led_error_retval = (enu_dio_error == GPIO_OK ? LED_OK : LED_ERROR);
+        en_led_error_retval = (en_dio_error == GPIO_OK ? LED_OK : LED_ERROR);
     }
 
-    return enu_led_error_retval;
+    return en_led_error_retval;
 }
 
 /**
  * @brief                       :   Turns on LED at given port/pin
  *
- * @param[in]   enu_led_port    :   LED Port
- * @param[in]   enu_led_pin     :   LED Pin number in enu_led_port
+ * @param[in]   en_led_port    :   LED Port
+ * @param[in]   en_led_pin     :   LED Pin number in en_led_port
  *
  * @return  LED_OK              :   In case of Successful Operation
  *          LED_ERROR           :   In case of Failed Operation
  */
-enu_led_error_t_ led_on(enu_led_port_t_ enu_led_port, enu_led_pin_t_ enu_led_pin)
+en_led_error_t_ led_on(en_led_port_t_ en_led_port, en_led_pin_t_ en_led_pin)
 {
-    enu_led_error_t_ enu_led_error_retval = LED_OK;
-    if((LED_PORT_TOTAL <= enu_led_port) || (LED_PIN_TOTAL <= enu_led_pin))
+    en_led_error_t_ en_led_error_retval = LED_OK;
+    if((LED_PORT_TOTAL <= en_led_port) || (LED_PIN_TOTAL <= en_led_pin))
     {
-        enu_led_error_retval = LED_ERROR;
+        en_led_error_retval = LED_ERROR;
     }
     else
     {
-        en_gpio_error_t enu_dio_error = gpio_setPinVal((en_gpio_port_t) enu_led_port,
-                                                       (en_gpio_pin_t) enu_led_pin,
+        en_gpio_error_t en_dio_error = gpio_setPinVal((en_gpio_port_t) en_led_port,
+                                                       (en_gpio_pin_t) en_led_pin,
                                                        HIGH);
 
-        enu_led_error_retval = (enu_dio_error != GPIO_OK ? LED_ERROR : LED_OK);
+        en_led_error_retval = (en_dio_error != GPIO_OK ? LED_ERROR : LED_OK);
     }
 
-    return enu_led_error_retval;
+    return en_led_error_retval;
 }
 
 /**
  * @brief                       :   Turns off LED at given port/pin
  *
- * @param[in]   enu_led_port    :   LED Port
- * @param[in]   enu_led_pin     :   LED Pin number in enu_led_port
+ * @param[in]   en_led_port    :   LED Port
+ * @param[in]   en_led_pin     :   LED Pin number in en_led_port
  *
  * @return  LED_OK              :   In case of Successful Operation
  *          LED_ERROR           :   In case of Failed Operation
  */
-enu_led_error_t_ led_off(enu_led_port_t_ enu_led_port, enu_led_pin_t_ enu_led_pin)
+en_led_error_t_ led_off(en_led_port_t_ en_led_port, en_led_pin_t_ en_led_pin)
 {
-    enu_led_error_t_ enu_led_error_retval = LED_OK;
+    en_led_error_t_ en_led_error_retval = LED_OK;
 
-    if((LED_PORT_TOTAL <= enu_led_port) || (LED_PIN_TOTAL <= enu_led_pin))
+    if((LED_PORT_TOTAL <= en_led_port) || (LED_PIN_TOTAL <= en_led_pin))
     {
-        enu_led_error_retval = LED_ERROR;
+        en_led_error_retval = LED_ERROR;
     }
     else
     {
-        en_gpio_error_t enu_dio_error = gpio_setPinVal((en_gpio_port_t) enu_led_port,
-                                                       (en_gpio_pin_t) enu_led_pin,
+        en_gpio_error_t en_dio_error = gpio_setPinVal((en_gpio_port_t) en_led_port,
+                                                       (en_gpio_pin_t) en_led_pin,
                                                        LOW);
-        enu_led_error_retval = (enu_dio_error != GPIO_OK ? LED_ERROR : LED_OK);
+        en_led_error_retval = (en_dio_error != GPIO_OK ? LED_ERROR : LED_OK);
     }
 
-    return enu_led_error_retval;
+    return en_led_error_retval;
 }
 
 /**
  * @brief                       :   Toggles LED at given port/pin
  *
- * @param[in]   enu_led_port    :   LED Port
- * @param[in]   enu_led_pin     :   LED Pin number in enu_led_port
+ * @param[in]   en_led_port    :   LED Port
+ * @param[in]   en_led_pin     :   LED Pin number in en_led_port
  *
  * @return  LED_OK              :   In case of Successful Operation
  *          LED_ERROR           :   In case of Failed Operation
  */
-enu_led_error_t_ led_toggle(enu_led_port_t_ enu_led_port, enu_led_pin_t_ enu_led_pin)
+en_led_error_t_ led_toggle(en_led_port_t_ en_led_port, en_led_pin_t_ en_led_pin)
 {
-    enu_led_error_t_ enu_led_error_retval = LED_OK;
+    en_led_error_t_ en_led_error_retval = LED_OK;
 
-    if((LED_PORT_TOTAL <= enu_led_port) || (LED_PIN_TOTAL <= enu_led_pin))
+    if((LED_PORT_TOTAL <= en_led_port) || (LED_PIN_TOTAL <= en_led_pin))
     {
-        enu_led_error_retval = LED_ERROR;
+        en_led_error_retval = LED_ERROR;
     }
     else
     {
-        en_gpio_error_t enu_dio_error = gpio_togPinVal((en_gpio_port_t) enu_led_port,
-                                                    (en_gpio_pin_t) enu_led_pin);
-        enu_led_error_retval = (enu_dio_error != GPIO_OK ? LED_ERROR : LED_OK);
+        en_gpio_error_t en_dio_error = gpio_togPinVal((en_gpio_port_t) en_led_port,
+                                                    (en_gpio_pin_t) en_led_pin);
+        en_led_error_retval = (en_dio_error != GPIO_OK ? LED_ERROR : LED_OK);
     }
 
-    return enu_led_error_retval;
+    return en_led_error_retval;
 }
