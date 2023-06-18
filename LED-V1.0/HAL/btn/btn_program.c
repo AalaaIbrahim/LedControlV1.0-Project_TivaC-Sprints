@@ -121,14 +121,20 @@ enu_btn_status_code_t_ btn_read(str_btn_config_t_* ptr_str_btn_config, enu_btn_s
 				case BTN_EXTERNAL_PULL_UP:
 				{
 					*ptr_enu_btn_state = (enu_btn_state_t_)(!lo_enu_btn_val);
-					systick_ms_delay(BTN_DEBOUNCE_DELAY);
+					if(BTN_STATE_PRESSED == *ptr_enu_btn_state)
+					{
+						systick_ms_delay(BTN_DEBOUNCE_DELAY);
+					}
 					break;
 				}
 				case BTN_INTERNAL_PULL_DOWN:
 				case BTN_EXTERNAL_PULL_DOWN:
 				{
 					*ptr_enu_btn_state = (enu_btn_state_t_)lo_enu_btn_val;
-					systick_ms_delay(BTN_DEBOUNCE_DELAY);
+					if(BTN_STATE_PRESSED == *ptr_enu_btn_state)
+					{
+						systick_ms_delay(BTN_DEBOUNCE_DELAY);
+					}
 					break;
 				}				
 				default : lo_enu_btn_status = BTN_STATUS_INVALID_PULL_TYPE;
