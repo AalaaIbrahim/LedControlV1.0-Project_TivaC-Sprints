@@ -12,9 +12,24 @@
 
 int main(void)
 {
-    app_init();
+    en_app_error_t en_app_error = APP_OK;
 
-    app_start();
-	
+    // initialize app
+    en_app_error = app_init();
+
+    if(APP_OK == en_app_error)
+    {
+        app_start();
+    }
+    else
+    {
+        // Do Nothing
+        while(1)
+        {
+            // Do Nothing
+        }
+    }
+
+
 	return 0;
 }

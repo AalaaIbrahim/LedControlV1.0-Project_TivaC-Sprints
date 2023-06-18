@@ -11,8 +11,24 @@
 #ifndef APP_H_
 #define APP_H_
 
-void app_init(void);
+typedef enum{
+    APP_OK,
+    APP_FAIL
+}en_app_error_t;
 
+
+/**
+ * @brief                       : Initializes the required modules by the app
+ *
+ * @return  APP_OK              :   In case of Successful Operation
+ *          APP_FAIL            :   In case of Failed Operation
+ */
+en_app_error_t app_init(void);
+
+
+/**
+ * @brief                       :   Starts the application program and keeps it running indefinitely
+ */
 void app_start(void);
 
 #endif

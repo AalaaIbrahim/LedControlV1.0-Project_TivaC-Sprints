@@ -51,15 +51,37 @@ static st_btn_config_t_ gl_st_user_btn_cfg = {
         .en_btn_pull_type = BTN_INTERNAL_PULL_UP
 };
 
-void app_init(void)
+/**
+ * @brief                      : Initializes the required modules by the app
+ *
+ * @return  APP_OK              :   In case of Successful Operation
+ *          APP_FAIL            :   In case of Failed Operation
+ */
+en_app_error_t app_init(void)
 {
-    // init RGB LED
-    led_init(RED_LED_PORT, RED_LED_PIN);
-    led_init(GREEN_LED_PORT, GREEN_LED_PIN);
-    led_init(BLUE_LED_PORT, BLUE_LED_PIN);
+    en_app_error_t en_app_error_retval = APP_OK;
+    en_btn_status_code_t_ en_btn_status_code = BTN_STATUS_OK;
+    en_led_error_t_ en_led_error = LED_OK;
 
-    // init BTN
-    btn_init(&gl_st_user_btn_cfg);
+    /* init RGB LED */
+
+    // init RED LED
+    en_led_error = led_init(RED_LED_PORT, RED_LED_PIN);
+    if(LED_OK != en_led_error) en_app_error_retval = APP_FAIL;
+
+    // init blue led
+    en_led_error = led_init(GREEN_LED_PORT, GREEN_LED_PIN);
+    if(LED_OK != en_led_error) en_app_error_retval = APP_FAIL;
+
+    // init green LED
+    en_led_error = led_init(BLUE_LED_PORT, BLUE_LED_PIN);
+    if(LED_OK != en_led_error) en_app_error_retval = APP_FAIL;
+
+    // init button
+    en_btn_status_code = btn_init(&gl_st_user_btn_cfg);
+    if(BTN_STATUS_OK != en_btn_status_code) en_app_error_retval = APP_FAIL;
+
+    return en_app_error_retval;
 }
 
 void app_start(void)
