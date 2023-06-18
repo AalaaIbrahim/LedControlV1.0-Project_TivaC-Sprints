@@ -1,7 +1,7 @@
 /**
  ** @file      gpio_program.c
  ** @brief     
- ** @author    
+ ** @author    Alaa
  ** @date      June 16, 2023
  ** @version   0.1
  */
@@ -131,17 +131,20 @@ en_gpio_error_t gpio_pin_init  (st_gpio_cfg_t* ptr_str_pin_cfg)
 				default: gpio_error_state = GPIO_INVALID_PIN_CFG;
 			}			
 			/* Set the pin drive strength */
-			if	((ptr_str_pin_cfg->current < PIN_CURRENT_TOTAL) 
-				&& (GPIO_OK == gpio_error_state) 
+			if	((GPIO_OK == gpio_error_state) 
 				&& (GET_BIT(GPIODIR(port), pin)))
 			{
-				if(TRUE == (GET_BIT(ptr_str_pin_cfg->current, GPIO_CUR_2MA_BIT))) SET_BIT(GPIODR2R(port), pin);
-				if(TRUE == (GET_BIT(ptr_str_pin_cfg->current, GPIO_CUR_4MA_BIT))) SET_BIT(GPIODR4R(port), pin);
-				if(TRUE == (GET_BIT(ptr_str_pin_cfg->current, GPIO_CUR_8MA_BIT))) SET_BIT(GPIODR8R(port), pin);
+				switch(ptr_str_pin_cfg->current)
+				{
+					case PIN_CURRENT_2MA: SET_BIT(GPIODR2R(port), pin); break;
+					case PIN_CURRENT_4MA: SET_BIT(GPIODR4R(port), pin); break;
+					case PIN_CURRENT_8MA: SET_BIT(GPIODR8R(port), pin); break;
+					default : gpio_error_state = GPIO_ERROR;
+				}
 			}
 			else
 			{
-				gpio_error_state = GPIO_ERROR;
+				/* Do Nothing */
 			}			
 		}
 		else

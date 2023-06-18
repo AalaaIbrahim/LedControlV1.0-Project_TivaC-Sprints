@@ -74,14 +74,9 @@ typedef enum
 
 typedef enum
 {
-	PIN_CURRENT_2MA = 1  ,
+	PIN_CURRENT_2MA = 0  ,
 	PIN_CURRENT_4MA      ,
-	PIN_CURRENT_6MA      ,
-	PIN_CURRENT_8MA      ,
-	PIN_CURRENT_10MA     ,
-	PIN_CURRENT_12MA     ,
-	PIN_CURRENT_14MA     ,
-	PIN_CURRENT_TOTAL    
+	PIN_CURRENT_8MA          
 }en_gpio_pin_current_t;
 
 typedef enum

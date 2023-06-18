@@ -37,10 +37,6 @@
 #define GPIOPCTL(X)				*((volatile uint32_t_*)(GPIO_OFFSET(X)+0x52C))		/* GPIO Port Control */
 
 
-#define GPIO_CUR_2MA_BIT  		0
-#define GPIO_CUR_4MA_BIT  		1
-#define GPIO_CUR_8MA_BIT  		2
-
 #define GPIO_INT_SENSE_MASK		1
 #define GPIO_INT_LEVEL_MASK		2
 
