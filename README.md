@@ -6,7 +6,7 @@
     - Hossam Elwahsh
 
 ## Brief
-> Develop the GPIO Driver and use it to control RGB LED on the Tiva-C board based using the push button.
+> Develop the GPIO Driver and use it to control RGB LED on the Tiva-C board using a push button.
 
 
 ## Quick Links
