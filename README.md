@@ -12,8 +12,8 @@
 ## Quick Links
 - `Video` 👉 [Youtube](https://youtu.be/5NrU2kTSSLw)
 - `Project Hex` 👉 [Build/LED_Control.hex](Build/LED_Control.hex)
-- `Documentation` 👉 [Google Docs](https://docs.google.com/document/d/15XCq7KhCA17o89rHl8B3dAgSLqRwxgf1_SmRaluHrGM/edit?usp=sharing) 👉 PDF - uploading
-- `Team Backlog / Test Protocol` 👉 [Google Sheets](https://docs.google.com/spreadsheets/d/1hLTnshn1FoeaB7fPf3SfYW_tURnP0ARYbz8il4nLKLA/edit#gid=0) 👉 Excel File - uploading 
+- `Documentation` 👉 [Google Docs](https://docs.google.com/document/d/15XCq7KhCA17o89rHl8B3dAgSLqRwxgf1_SmRaluHrGM/edit?usp=sharing) 👉 [PDF](https://github.com/AalaaIbrahim/LedControlV1.0-Project_TivaC-Sprints/blob/main-led/Documents/ARM_%20RGB%20LED%20Control%20V1.0%20-%20Team%201%20-%20Sub%20Team%20A.pdf)
+- `Team Backlog / Test Protocol` 👉 [Google Sheets](https://docs.google.com/spreadsheets/d/1hLTnshn1FoeaB7fPf3SfYW_tURnP0ARYbz8il4nLKLA/edit#gid=0) 👉 [Excel File](https://github.com/AalaaIbrahim/LedControlV1.0-Project_TivaC-Sprints/blob/main-led/Documents/ARM%20RGB%20Control%20V1.0%20-%20Team%201%20-%20Sub%20Team%20A.xlsx)
 
 ----
 ## Requirements
