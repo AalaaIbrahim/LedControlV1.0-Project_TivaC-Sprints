@@ -1,5 +1,5 @@
 /**
- * @file    :   led_program.c
+ * @file    :   systick_private.h
  * @author  :   Hossam Elwahsh - https://github.com/HossamElwahsh
  * @brief   :   Header File contains all SYSTICK typedefs and functions' prototypes
  * @version :   0.1
